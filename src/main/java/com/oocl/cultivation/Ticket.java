@@ -3,15 +3,13 @@ package com.oocl.cultivation;
 import java.util.Map;
 
 public class Ticket {
-    private String numberPlate;
+    private String id;
 
     public Ticket(String numberPlate) {
-        this.numberPlate = numberPlate;
+        this.id = numberPlate;
     }
 
-    public String getNumberPlate() {
-        return numberPlate;
+    public String getId() {
+        return id;
     }
-
-
 }
