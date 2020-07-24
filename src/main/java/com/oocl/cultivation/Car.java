@@ -1,13 +1,13 @@
 package com.oocl.cultivation;
 
 public class Car {
-    private String numberPlate;
+    private String id;
 
     public Car(String numberPlate) {
-        this.numberPlate = numberPlate;
+        this.id = numberPlate;
     }
 
-    public String getNumberPlate() {
-        return numberPlate;
+    public String getId() {
+        return id;
     }
 }
