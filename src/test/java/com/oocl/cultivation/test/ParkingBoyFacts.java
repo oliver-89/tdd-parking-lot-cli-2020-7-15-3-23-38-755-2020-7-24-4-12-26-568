@@ -12,14 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ParkingBoyFacts {
 
 
-    //given used ticket 1 parking boy
-    //when fetch car
-    //then return null
 
-
-    //given 1 car 1 parking boy 1 full parking lot
-    //when parking boy parking
-    //then return null
     @Test
     void should_return_1_ticket_when_parking_boy_parking_given_1_car_1_parking_boy() {
         //given 1 car 1 parking boy
@@ -90,6 +83,27 @@ class ParkingBoyFacts {
 
         //then return null
         assertEquals(null,car2);
+
+    }
+
+
+
+    @Test
+    void should_return_null_when_parking_boy_fetching_given_1_car_1_parking_boy_1_full_parking_lot(){
+
+        //given 1 car 1 parking boy 1 full parking lot
+        Car car = new Car("湘A562562");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot = parkingBoy.getParkingLot();
+        parkingLot.setCapacity(10);
+
+        //when parking boy parking
+        Ticket ticket = parkingBoy.parking(car);
+
+        //then return null
+        assertEquals(null,ticket);
+
+
 
     }
 
