@@ -4,6 +4,7 @@ import com.oocl.cultivation.Car;
 import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.Ticket;
+import jdk.nashorn.internal.runtime.regexp.joni.constants.TargetInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -131,6 +132,25 @@ AC3：当停车男孩试图将汽车停在没有位置的停车场内时。 该�
 
         //should return null notify unrecognized parking ticket
         assertEquals(null,car);
+        assertEquals(msg,"unrecognized parking ticket");
+
+    }
+
+    @Test
+    void should_return_null_notify_unrecognized_parking_ticker_when_fetching_given_used_ticket_1_parking_boy(){
+
+        //given used ticket 1 parking boy
+        Car car = new Car("湘A562562");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Ticket ticket = parkingBoy.parking(car);
+        parkingBoy.fetching(ticket);
+
+        //when parking boy fetching
+        Car car2 = parkingBoy.fetching(ticket);
+        String msg = parkingBoy.notify(ticket);
+
+        //should return null notify unrecognized parking ticket
+        assertEquals(null,car2);
         assertEquals(msg,"unrecognized parking ticket");
 
     }
