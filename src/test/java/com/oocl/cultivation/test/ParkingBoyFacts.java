@@ -2,7 +2,9 @@ package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.ParkingBoy;
+import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.Ticket;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,10 +52,13 @@ class ParkingBoyFacts {
     @Test
     void should_return_1_car_when_parking_boy_fetching_given_1_ticket() {
         //given 1 ticket 1 parking boy
-        Ticket ticket = new Ticket("湘A562562");
         ParkingBoy parkingBoy = new ParkingBoy();
+        parkingBoy.getParkingLot().getCars().add(new Car("湘A562562"));
+
+        Ticket ticket = new Ticket("湘A562562");
+
         //when parking boy parking
-        Car result = parkingBoy.fetch(ticket);
+        Car result = parkingBoy.fetching(ticket);
         //then return 1 ticket
         assertEquals("湘A562562",result.getNumberPlate());
     }
