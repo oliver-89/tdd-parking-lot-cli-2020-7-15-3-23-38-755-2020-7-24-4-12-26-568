@@ -44,7 +44,10 @@ public class ParkingBoy {
 
     public String notify(Ticket ticket){
         String msg = null;
-        if(fetching(ticket)==null){
+        if(ticket==null){
+            msg="Please provide your parking ticket";
+
+        }else if(fetching(ticket)==null){
             msg = "unrecognized parking ticket";
         }
         return msg;
