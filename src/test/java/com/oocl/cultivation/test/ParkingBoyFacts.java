@@ -109,9 +109,6 @@ class ParkingBoyFacts {
     /*
     故事2
 
-作为客户，当我无法取车时，我想从停车男孩那里得到一些响应消息。 这样我才能知道会发生什么。
-
-AC1：当客户出错票时（停车男孩不提供票/已使用票）。 然后，任何车都不应取。 如果查询错误消息，我将获得“无法识别的停车罚单”。
 
 AC2：当客户取车时不提供车票时。 错误消息应为“请提供停车票”。
 
@@ -153,6 +150,20 @@ AC3：当停车男孩试图将汽车停在没有位置的停车场内时。 该�
         assertEquals(null,car2);
         assertEquals(msg,"unrecognized parking ticket");
 
+    }
+
+    @Test
+    void should_notify_provide_your_parking_ticket_when_fetching_given_no_ticket_1_parking_boy(){
+        //given no ticket 1 parking boy
+        ParkingBoy parkingBoy = new ParkingBoy();
+
+        //when parking boy fetching
+        Car car = parkingBoy.fetching(null);
+        String msg = parkingBoy.notify(null);
+
+        //then return null notify provide your parking ticket
+        assertEquals(null,car);
+        assertEquals("Please provide your parking ticket",msg);
     }
 
 
