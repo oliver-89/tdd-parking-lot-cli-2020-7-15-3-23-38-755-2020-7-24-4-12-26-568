@@ -1,22 +1,22 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Map;
 
 public class ParkingLot {
     private int totalNumber;
-    private LinkedList<Car> cars;
+    private ArrayList<Car> cars;
 
     public ParkingLot() {
         this.totalNumber = 0;
-        this.cars = new LinkedList<Car>();
+        this.cars = new ArrayList<Car>();
     }
 
     public int getTotalNumber() {
         return totalNumber;
     }
 
-    public LinkedList<Car> getCars() {
+    public ArrayList<Car> getCars() {
         return cars;
     }
 }

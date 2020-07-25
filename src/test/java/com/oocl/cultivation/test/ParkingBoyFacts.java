@@ -61,14 +61,17 @@ class ParkingBoyFacts {
     @Test
     void should_return_2_tickets_when_parking_boy_parking_given_2_cars_1_parking_boy(){
         //given 2 cars 1 parking boy
-        Car[] cars=new Car[]{new Car("湘A562562"),new Car("湘A562563")};
+        Car car = new Car("湘A562562");
+        Car car2 = new Car("湘A562563");
         ParkingBoy parkingBoy = new ParkingBoy();
 
         //when parking boy parking
-        Ticket[] tickets = parkingBoy.fetching(cars);
+        Ticket ticket = parkingBoy.parking(car);
+        Ticket ticket2 = parkingBoy.parking(car2);
 
         //then return 2 tickets
-        assertEquals(new Ticket[]{new Ticket("湘A562562"),new Ticket("湘A562563")},tickets);
+        assertEquals("湘A562562",ticket.getId());
+        assertEquals("湘A562563",ticket2.getId());
 
     }
 
