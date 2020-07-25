@@ -18,8 +18,12 @@ public class ParkingBoy {
     }
 
     public Ticket parking(Car car){
-        Ticket ticket = new Ticket(car.getNumberPlate());
-        parkingLot.getCars().add(car);
+        Ticket ticket =null;
+        if(parkingLot.getCapacity()<10){
+            ticket = new Ticket(car.getNumberPlate());
+            parkingLot.getCars().add(car);
+            parkingLot.setCapacity(parkingLot.getCapacity()+1);
+        }
         return  ticket;
     }
 
@@ -32,6 +36,7 @@ public class ParkingBoy {
             if(car.getNumberPlate() == ticket.getId()){
                 customerCar = car;
                 iterator.remove();
+                parkingLot.setCapacity(parkingLot.getCapacity()-1);
             }
         }
         return customerCar;
