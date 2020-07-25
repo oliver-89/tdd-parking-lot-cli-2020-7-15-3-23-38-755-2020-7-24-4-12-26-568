@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ParkingBoy {
@@ -21,7 +23,7 @@ public class ParkingBoy {
     }
 
     public Car fetching(Ticket ticket){
-        LinkedList<Car> cars = parkingLot.getCars();
+        ArrayList<Car> cars = parkingLot.getCars();
         Car customerCar=null;
         for(Car car:cars){
             if(car.getNumberPlate() == ticket.getId()){
