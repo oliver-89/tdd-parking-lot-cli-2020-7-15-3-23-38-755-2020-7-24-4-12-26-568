@@ -40,6 +40,13 @@ public class ParkingBoy {
             }
         }
         return customerCar;
+    }
 
+    public String notify(Ticket ticket){
+        String msg = null;
+        if(fetching(ticket)==null){
+            msg = "unrecognized parking ticket";
+        }
+        return msg;
     }
 }

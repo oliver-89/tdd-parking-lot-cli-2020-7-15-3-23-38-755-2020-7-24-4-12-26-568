@@ -133,14 +133,6 @@ AC3：当停车男孩试图将汽车停在没有位置的停车场内时。 该�
         assertEquals(null,car);
         assertEquals(msg,"unrecognized parking ticket");
 
-
-
-
-
-
-
-
-
     }
 
 
