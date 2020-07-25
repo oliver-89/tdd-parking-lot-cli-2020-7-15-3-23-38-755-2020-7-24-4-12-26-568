@@ -44,7 +44,9 @@ public class ParkingBoy {
 
     public String notify(Ticket ticket){
         String msg = null;
-        if(ticket==null){
+        if(ticket ==null && parkingLot.getCapacity()==10){
+            msg="No enough position";
+        }else if(ticket==null){
             msg="Please provide your parking ticket";
 
         }else if(fetching(ticket)==null){
