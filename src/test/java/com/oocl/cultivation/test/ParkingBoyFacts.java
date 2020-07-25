@@ -176,9 +176,7 @@ class ParkingBoyFacts {
         assertEquals("No enough position",msg);
     }
 
-    /*
-    AC1。 停车位男孩并不那么聪明，他将始终按顺序停车（假定有两个由停车位男孩管理的停车场。当第一个停车位已满时，停车位男孩会将车子停放在第二个停车位）。
-     */
+
     @Test
     void should_return_ticket_when_parking_given_1_car_1_full_parking_lot_1_parking_boy(){
         //given 1 full parking lot 1 parking boy
@@ -194,11 +192,22 @@ class ParkingBoyFacts {
 
     }
 
+    @Test
+    void should_parking_car_to_have_less_cars_parking_lot_when_smart_parking_boy_parking_given_1_more_cars_parking_lot_1_less_1_smart_parking_boy_1_car(){
+        //given 1 more cars parking lot 1 less 1 smart parking boy 1 car
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        smartParkingBoy.getParkingLots().get(0).setCapacity(2);
+        smartParkingBoy.getParkingLots().get(1).setCapacity(5);
+        Car car = new Car("湘A78178");
 
+        //when smart parking boy parking
+        smartParkingBoy.parking(car);
+        boolean isExist = smartParkingBoy.getParkingLots().get(0).contains(car);
 
-    //when parking boy parking
+        //then car in have less cars parking lot
+        assertEquals(true,isExist);
 
-    //then return ticket
+    }
 
 
 
