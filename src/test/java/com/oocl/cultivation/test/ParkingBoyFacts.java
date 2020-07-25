@@ -11,19 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ParkingBoyFacts {
 
-    //given 2 car 1 pariking boy
-    //when parking boy parking
-    //then return 2 tickets
-
-    //given 2 tickets 1 parking boy
-    //when fetch car
-    //then return 2 cars
-
-
-    //give wrong ticket 1 parking boy
-    //when fetch car
-    //then return null
-
 
     //given used ticket 1 parking boy
     //when fetch car
@@ -87,6 +74,22 @@ class ParkingBoyFacts {
         //then return null
         assertEquals(null,car);
 
+    }
+
+
+    @Test
+    void should_return_null_when_parking_boy_parking_given_used_ticket_1_parking_boy(){
+        //given used ticket 1 parking boy
+        Car car = new Car("湘A562562");
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Ticket ticket = parkingBoy.parking(car);
+        parkingBoy.fetching(ticket);
+
+        //when parking boy parking
+        Car car2 = parkingBoy.fetching(ticket);
+
+        //then return null
+        assertEquals(null,car2);
 
     }
 
