@@ -2,6 +2,7 @@ package com.oocl.cultivation;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ParkingBoy {
@@ -25,9 +26,12 @@ public class ParkingBoy {
     public Car fetching(Ticket ticket){
         ArrayList<Car> cars = parkingLot.getCars();
         Car customerCar=null;
-        for(Car car:cars){
+        Iterator<Car> iterator = cars.iterator();
+        while (iterator.hasNext()){
+            Car car = iterator.next();
             if(car.getNumberPlate() == ticket.getId()){
                 customerCar = car;
+                iterator.remove();
             }
         }
         return customerCar;
