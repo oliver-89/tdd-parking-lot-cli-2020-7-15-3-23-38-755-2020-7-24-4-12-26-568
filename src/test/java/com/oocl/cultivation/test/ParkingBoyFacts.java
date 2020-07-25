@@ -29,8 +29,7 @@ class ParkingBoyFacts {
     void should_return_1_car_when_parking_boy_fetching_given_1_ticket_1_parking_boy() {
         //given 1 ticket 1 parking boy
         ParkingBoy parkingBoy = new ParkingBoy();
-        parkingBoy.getParkingLot().getCars().add(new Car("湘A562562"));
-
+        parkingBoy.getParkingLots().get(0).getCars().add(new Car("湘A562562"));
         Ticket ticket = new Ticket("湘A562562");
 
         //when parking boy fetching
@@ -95,8 +94,10 @@ class ParkingBoyFacts {
         //given 1 car 1 parking boy 1 full parking lot
         Car car = new Car("湘A562562");
         ParkingBoy parkingBoy = new ParkingBoy();
-        ParkingLot parkingLot = parkingBoy.getParkingLot();
-        parkingLot.setCapacity(10);
+        for(int i = 0;i<parkingBoy.getNumOfParkingLot();i++){
+            parkingBoy.getParkingLots().get(i).setCapacity(10);
+        }
+
 
         //when parking boy parking
         Ticket ticket = parkingBoy.parking(car);
@@ -157,10 +158,13 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_notify_no_enough_position_when_parking_given_1_car_1_parking_boy_1_full_parking_lot(){
+    void should_notify_no_enough_position_when_parking_given_1_car_1_parking_boy_full_parking_lot(){
         //given 1 car 1 parking boy 1 full parking lot
         ParkingBoy parkingBoy = new ParkingBoy();
-        parkingBoy.getParkingLot().setCapacity(10);
+        for(int i = 0;i<parkingBoy.getNumOfParkingLot();i++){
+            parkingBoy.getParkingLots().get(i).setCapacity(10);
+        }
+
         Car car = new Car("湘A562562");
 
         //when parking boy fetching
@@ -179,7 +183,7 @@ class ParkingBoyFacts {
     void should_return_ticket_when_parking_given_1_car_1_full_parking_lot_1_parking_boy(){
         //given 1 full parking lot 1 parking boy
         ParkingBoy parkingBoy = new ParkingBoy();
-        parkingBoy.getParkingLot().setCapacity(10);
+        parkingBoy.getParkingLots().get(0).setCapacity(10);
         Car car = new Car("湘A782611");
 
         //when parking boy parking

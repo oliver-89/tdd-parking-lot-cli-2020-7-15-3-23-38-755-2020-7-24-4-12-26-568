@@ -7,36 +7,53 @@ import java.util.LinkedList;
 
 public class ParkingBoy {
 
-    private ParkingLot parkingLot;
+    private ArrayList<ParkingLot> parkingLots;
+    private int numOfParkingLot;
 
     public ParkingBoy() {
-        this.parkingLot = new ParkingLot();
+        this.numOfParkingLot =2;
+        this.parkingLots = new ArrayList<ParkingLot>();
+        for(int i = 1;i<numOfParkingLot+1;i++){
+            parkingLots.add(new ParkingLot());
+        }
     }
 
-    public ParkingLot getParkingLot() {
-        return parkingLot;
+    public ArrayList<ParkingLot> getParkingLots() {
+        return parkingLots;
     }
+
+    public int getNumOfParkingLot() {
+        return numOfParkingLot;
+    }
+
 
     public Ticket parking(Car car){
         Ticket ticket =null;
-        if(parkingLot.getCapacity()<10){
-            ticket = new Ticket(car.getNumberPlate());
-            parkingLot.getCars().add(car);
-            parkingLot.setCapacity(parkingLot.getCapacity()+1);
+        for(ParkingLot parkingLot:parkingLots){
+            if (ticket==null&&parkingLot.getCapacity()<10){
+                ticket = new Ticket(car.getNumberPlate());
+                parkingLot.getCars().add(car);
+                parkingLot.setCapacity(parkingLot.getCapacity()+1);
+                break;
+            }
         }
+
         return  ticket;
     }
 
     public Car fetching(Ticket ticket){
-        ArrayList<Car> cars = parkingLot.getCars();
         Car customerCar=null;
-        Iterator<Car> iterator = cars.iterator();
-        while (iterator.hasNext()){
-            Car car = iterator.next();
-            if(car.getNumberPlate() == ticket.getId()){
-                customerCar = car;
-                iterator.remove();
-                parkingLot.setCapacity(parkingLot.getCapacity()-1);
+        for(ParkingLot parkingLot:parkingLots){
+            ArrayList<Car> cars = parkingLot.getCars();
+
+            Iterator<Car> iterator = cars.iterator();
+            while (iterator.hasNext()){
+                Car car = iterator.next();
+                if(car.getNumberPlate() == ticket.getId()){
+                    customerCar = car;
+                    iterator.remove();
+                    parkingLot.setCapacity(parkingLot.getCapacity()-1);
+                }
             }
         }
         return customerCar;
@@ -44,7 +61,11 @@ public class ParkingBoy {
 
     public String notify(Ticket ticket){
         String msg = null;
-        if(ticket ==null && parkingLot.getCapacity()==10){
+        int totalCapacity = 0;
+        for(ParkingLot parkingLot:parkingLots){
+            totalCapacity += parkingLot.getCapacity();
+        }
+        if(ticket ==null && totalCapacity==10*numOfParkingLot){
             msg="No enough position";
         }else if(ticket==null){
             msg="Please provide your parking ticket";
