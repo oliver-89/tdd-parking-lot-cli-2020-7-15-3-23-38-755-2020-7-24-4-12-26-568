@@ -106,16 +106,6 @@ class ParkingBoyFacts {
 
     }
 
-    /*
-    故事2
-
-
-AC2：当客户取车时不提供车票时。 错误消息应为“请提供停车票”。
-
-AC3：当停车男孩试图将汽车停在没有位置的停车场内时。 该错误信息应该是“位置不足”。
-
-     */
-
     @Test
     void should_return_null_notify_unrecognized_parking_ticker_when_fetching_given_wrong_ticket_1_parking_boy(){
 
@@ -164,6 +154,22 @@ AC3：当停车男孩试图将汽车停在没有位置的停车场内时。 该�
         //then return null notify provide your parking ticket
         assertEquals(null,car);
         assertEquals("Please provide your parking ticket",msg);
+    }
+
+    @Test
+    void should_notify_no_enough_position_when_parking_given_1_car_1_parking_boy_1_full_parking_lot(){
+        //given 1 car 1 parking boy 1 full parking lot
+        ParkingBoy parkingBoy = new ParkingBoy();
+        parkingBoy.getParkingLot().setCapacity(10);
+        Car car = new Car("湘A562562");
+
+        //when parking boy fetching
+        Ticket ticket = parkingBoy.parking(car);
+        String msg = parkingBoy.notify(ticket);
+
+        //then return null notify provide your parking ticket
+        assertEquals(null,ticket);
+        assertEquals("No enough position",msg);
     }
 
 
