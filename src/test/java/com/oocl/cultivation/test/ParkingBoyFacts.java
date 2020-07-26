@@ -461,6 +461,79 @@ class ParkingBoyFacts {
 
     }
 
+    @Test
+    void should_return_null_notify_unrecognized_parking_ticker_when_fetching_given_wrong_ticket_1_super_smart_parking_boy(){
+
+        //given wrong ticket 1 parking boy
+        Ticket ticket = new Ticket("wrong");
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+
+        //when parking boy fetching
+        Car car = superSmartParkingBoy.fetching(ticket);
+        String msg = superSmartParkingBoy.notify(ticket);
+
+        //should return null notify unrecognized parking ticket
+        assertEquals(null,car);
+        assertEquals(msg,"unrecognized parking ticket");
+
+    }
+
+    @Test
+    void should_return_null_notify_unrecognized_parking_ticker_when_fetching_given_used_ticket_1_super_smart_parking_boy(){
+
+        //given used ticket 1 parking boy
+        Car car = new Car("湘A562562");
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        Ticket ticket = superSmartParkingBoy.parking(car);
+        superSmartParkingBoy.fetching(ticket);
+
+        //when parking boy fetching
+        Car car2 = superSmartParkingBoy.fetching(ticket);
+        String msg = superSmartParkingBoy.notify(ticket);
+
+        //should return null notify unrecognized parking ticket
+        assertEquals(null,car2);
+        assertEquals(msg,"unrecognized parking ticket");
+
+    }
+
+    @Test
+    void should_notify_provide_your_parking_ticket_when_fetching_given_no_ticket_1_super_smart_parking_boy(){
+        //given no ticket 1 parking boy
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+
+        //when parking boy fetching
+        Car car = superSmartParkingBoy.fetching(null);
+        String msg = superSmartParkingBoy.notify(null);
+
+        //then return null notify provide your parking ticket
+        assertEquals(null,car);
+        assertEquals("Please provide your parking ticket",msg);
+    }
+
+
+    @Test
+
+    void should_notify_no_enough_position_when_parking_given_1_car_1_super_smart_parking_boy_full_parking_lot(){
+        //given 1 car 1 parking boy  full parking lot
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        for(int i = 0;i<superSmartParkingBoy.getNumOfParkingLot();i++){
+            superSmartParkingBoy.getParkingLots().get(i).setCapacity(10);
+        }
+
+        Car car = new Car("湘A562562");
+
+        //when parking boy fetching
+        Ticket ticket = superSmartParkingBoy.parking(car);
+        String msg = superSmartParkingBoy.notify(ticket);
+
+        //then return null notify provide your parking ticket
+        assertEquals(null,ticket);
+        assertEquals("No enough position",msg);
+
+
+    }
+
 
 
 }
