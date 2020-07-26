@@ -237,6 +237,20 @@ class ParkingBoyFacts {
 
     }
 
+    @Test
+    void should_return_null_when_smart_parking_boy_parking_given_wrong_ticket_1_smart_parking_boy(){
+        //given wrong ticket 1 parking boy
+        Ticket ticket = new Ticket("wrong");
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+
+        //when parking boy parking
+        Car car = smartParkingBoy.fetching(ticket);
+
+        //then return null
+        assertEquals(null,car);
+
+    }
+
 
 
 }
