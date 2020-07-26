@@ -191,6 +191,8 @@ class ParkingBoyFacts {
 
     }
 
+    //story4
+
     @Test
     void should_parking_car_to_have_less_cars_parking_lot_when_smart_parking_boy_parking_given_1_more_cars_parking_lot_1_less_1_smart_parking_boy_1_car(){
         //given 1 more cars parking lot 1 less 1 smart parking boy 1 car
@@ -362,6 +364,8 @@ class ParkingBoyFacts {
 
     }
 
+    //story 5
+
     @Test
     void should_park_in_large_available_position_rate_parking_lot_when_parking_given_super_smart_parking_boy_1_car(){
         //given 1 super smart parking boy 1 car 2 parking lot
@@ -375,6 +379,19 @@ class ParkingBoyFacts {
         Boolean isExis = superSmartParkingBoy.getParkingLots().get(0).getCars().contains(car);
         //then park in large available 1
         assertEquals(true,isExis);
+    }
+
+    @Test
+    void should_return_1_car_when_super_smart_parking_boy_fetching_given_1_ticket_1_super_smart_parking_boy() {
+        //given 1 ticket 1 smart parking boy
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        superSmartParkingBoy.getParkingLots().get(0).getCars().add(new Car("湘A562562"));
+        Ticket ticket = new Ticket("湘A562562");
+
+        //when smart parking boy fetching
+        Car car = superSmartParkingBoy.fetching(ticket);
+        //then return 1 car
+        assertEquals("湘A562562",car.getNumberPlate());
     }
 
 
