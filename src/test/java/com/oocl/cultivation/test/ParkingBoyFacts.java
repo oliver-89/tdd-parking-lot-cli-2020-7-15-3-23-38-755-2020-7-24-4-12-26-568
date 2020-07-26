@@ -394,6 +394,23 @@ class ParkingBoyFacts {
         assertEquals("湘A562562",car.getNumberPlate());
     }
 
+    @Test
+    void should_return_2_tickets_when_super_smart_parking_boy_parking_given_2_cars_1_super_smart_parking_boy(){
+        //given 2 cars 1 parking boy
+        Car car = new Car("湘A562562");
+        Car car2 = new Car("湘A562563");
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+
+        //when parking boy parking
+        Ticket ticket = superSmartParkingBoy.parking(car);
+        Ticket ticket2 = superSmartParkingBoy.parking(car2);
+
+        //then return 2 tickets
+        assertEquals("湘A562562",ticket.getId());
+        assertEquals("湘A562563",ticket2.getId());
+
+    }
+
 
 
 }
