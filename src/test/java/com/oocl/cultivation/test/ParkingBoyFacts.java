@@ -2,6 +2,7 @@ package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
 import jdk.nashorn.internal.runtime.regexp.joni.constants.TargetInfo;
+import net.bytebuddy.implementation.bind.annotation.Super;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -438,6 +439,25 @@ class ParkingBoyFacts {
 
         //then return null
         assertEquals(null,car2);
+
+    }
+
+    @Test
+    void should_return_null_when_super_smart_parking_boy_fetching_given_1_car_1_super_smart_parking_boy_full_parking_lot(){
+
+        //given 1 car 1 parking boy 2 full parking lot
+        Car car = new Car("湘A562562");
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        for(int i = 0;i<superSmartParkingBoy.getNumOfParkingLot();i++){
+            superSmartParkingBoy.getParkingLots().get(i).setCapacity(10);
+        }
+
+
+        //when parking boy parking
+        Ticket ticket = superSmartParkingBoy.parking(car);
+
+        //then return null
+        assertEquals(null,ticket);
 
     }
 
