@@ -367,14 +367,14 @@ class ParkingBoyFacts {
         //given 1 super smart parking boy 1 car 2 parking lot
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
         Car car = new Car("湘A28912");
-        superSmartParkingBoy.getParkingLots.get(0).setCapacity(2);
-        superSmartParkingBoy.getParkingLots.get(0).setCapacity(7);
+        superSmartParkingBoy.getParkingLots().get(0).setCapacity(2);
+        superSmartParkingBoy.getParkingLots().get(1).setCapacity(7);
 
         //when parking
         superSmartParkingBoy.parking(car);
-        Boolean isExis = superSmartParkingBoy.get(0).getParkingLots.contains(car);
+        Boolean isExis = superSmartParkingBoy.getParkingLots().get(0).getCars().contains(car);
         //then park in large available 1
-        assertEquals(ture,isExis);
+        assertEquals(true,isExis);
     }
 
 
