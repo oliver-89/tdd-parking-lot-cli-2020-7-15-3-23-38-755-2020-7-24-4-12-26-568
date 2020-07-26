@@ -207,5 +207,19 @@ class ParkingBoyFacts {
     }
 
 
+    @Test
+    void should_return_1_car_when_smart_parking_boy_fetching_given_1_ticket_1_smart_parking_boy() {
+        //given 1 ticket 1 smart parking boy
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        smartParkingBoy.getParkingLots().get(0).getCars().add(new Car("湘A562562"));
+        Ticket ticket = new Ticket("湘A562562");
+
+        //when smart parking boy fetching
+        Car car = smartParkingBoy.fetching(ticket);
+        //then return 1 car
+        assertEquals("湘A562562",car.getNumberPlate());
+    }
+
+
 
 }
