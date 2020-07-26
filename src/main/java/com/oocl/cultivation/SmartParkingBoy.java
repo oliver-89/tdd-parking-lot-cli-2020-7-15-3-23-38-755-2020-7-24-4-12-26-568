@@ -7,7 +7,7 @@ public class SmartParkingBoy extends ParkingBoy{
 
 
     public Ticket parking(Car car){
-        if(getTotalNumOfCars()<20){
+        if(getTotalNumOfCars()<getNumOfParkingLot()*10){
             ParkingLot parkingLot = findLessParkingLot(getParkingLots());
             Ticket ticket = new Ticket(car.getNumberPlate());
             parkingLot.getCars().add(car);
