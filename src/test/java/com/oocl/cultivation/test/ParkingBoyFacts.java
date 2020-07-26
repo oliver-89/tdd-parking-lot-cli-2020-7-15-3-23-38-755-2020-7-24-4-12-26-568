@@ -268,5 +268,25 @@ class ParkingBoyFacts {
     }
 
 
+    @Test
+    void should_return_null_when_smart_parking_boy_fetching_given_1_car_1_smart_parking_boy_full_parking_lot(){
+
+        //given 1 car 1 parking boy 2 full parking lot
+        Car car = new Car("湘A562562");
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        for(int i = 0;i<smartParkingBoy.getNumOfParkingLot();i++){
+            smartParkingBoy.getParkingLots().get(i).setCapacity(10);
+        }
+
+
+        //when parking boy parking
+        Ticket ticket = smartParkingBoy.parking(car);
+
+        //then return null
+        assertEquals(null,ticket);
+
+    }
+
+
 
 }
