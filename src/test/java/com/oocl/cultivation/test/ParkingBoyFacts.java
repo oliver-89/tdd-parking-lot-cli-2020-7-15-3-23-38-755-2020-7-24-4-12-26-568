@@ -306,6 +306,25 @@ class ParkingBoyFacts {
 
     }
 
+    @Test
+    void should_return_null_notify_unrecognized_parking_ticker_when_fetching_given_used_ticket_1_smart_parking_boy(){
+
+        //given used ticket 1 parking boy
+        Car car = new Car("湘A562562");
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        Ticket ticket = smartParkingBoy.parking(car);
+        smartParkingBoy.fetching(ticket);
+
+        //when parking boy fetching
+        Car car2 = smartParkingBoy.fetching(ticket);
+        String msg = smartParkingBoy.notify(ticket);
+
+        //should return null notify unrecognized parking ticket
+        assertEquals(null,car2);
+        assertEquals(msg,"unrecognized parking ticket");
+
+    }
+
 
 
 }
