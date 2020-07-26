@@ -1,9 +1,6 @@
 package com.oocl.cultivation.test;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.ParkingBoy;
-import com.oocl.cultivation.ParkingLot;
-import com.oocl.cultivation.Ticket;
+import com.oocl.cultivation.*;
 import jdk.nashorn.internal.runtime.regexp.joni.constants.TargetInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -202,7 +199,7 @@ class ParkingBoyFacts {
 
         //when smart parking boy parking
         smartParkingBoy.parking(car);
-        boolean isExist = smartParkingBoy.getParkingLots().get(0).contains(car);
+        boolean isExist = smartParkingBoy.getParkingLots().get(0).getCars().contains(car);
 
         //then car in have less cars parking lot
         assertEquals(true,isExist);
