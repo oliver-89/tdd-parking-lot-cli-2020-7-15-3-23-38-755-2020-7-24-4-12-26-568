@@ -339,21 +339,21 @@ class ParkingBoyFacts {
         assertEquals("Please provide your parking ticket",msg);
     }
 
-    /*
+
     @Test
 
-    void should_notify_no_enough_position_when_parking_given_1_car_1_parking_boy_full_parking_lot(){
-        //given 1 car 1 parking boy 1 full parking lot
-        ParkingBoy parkingBoy = new ParkingBoy();
-        for(int i = 0;i<parkingBoy.getNumOfParkingLot();i++){
-            parkingBoy.getParkingLots().get(i).setCapacity(10);
+    void should_notify_no_enough_position_when_parking_given_1_car_1_smart_parking_boy_full_parking_lot(){
+        //given 1 car 1 parking boy  full parking lot
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        for(int i = 0;i<smartParkingBoy.getNumOfParkingLot();i++){
+            smartParkingBoy.getParkingLots().get(i).setCapacity(10);
         }
 
         Car car = new Car("湘A562562");
 
         //when parking boy fetching
-        Ticket ticket = parkingBoy.parking(car);
-        String msg = parkingBoy.notify(ticket);
+        Ticket ticket = smartParkingBoy.parking(car);
+        String msg = smartParkingBoy.notify(ticket);
 
         //then return null notify provide your parking ticket
         assertEquals(null,ticket);
@@ -362,6 +362,6 @@ class ParkingBoyFacts {
 
     }
 
-*/
+
 
 }
