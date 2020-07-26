@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ParkingBoyFacts {
 
 
-
+    //story1
     @Test
     void should_return_1_ticket_when_parking_boy_parking_given_1_car_1_parking_boy() {
         //given 1 car 1 parking boy
@@ -103,6 +103,8 @@ class ParkingBoyFacts {
         assertEquals(null,ticket);
 
     }
+
+    //story2
 
     @Test
     void should_return_null_notify_unrecognized_parking_ticker_when_fetching_given_wrong_ticket_1_parking_boy(){
@@ -284,6 +286,23 @@ class ParkingBoyFacts {
 
         //then return null
         assertEquals(null,ticket);
+
+    }
+
+    @Test
+    void should_return_null_notify_unrecognized_parking_ticker_when_fetching_given_wrong_ticket_1_smart_parking_boy(){
+
+        //given wrong ticket 1 parking boy
+        Ticket ticket = new Ticket("wrong");
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+
+        //when parking boy fetching
+        Car car = smartParkingBoy.fetching(ticket);
+        String msg = smartParkingBoy.notify(ticket);
+
+        //should return null notify unrecognized parking ticket
+        assertEquals(null,car);
+        assertEquals(msg,"unrecognized parking ticket");
 
     }
 
