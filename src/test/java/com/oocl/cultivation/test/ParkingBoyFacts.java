@@ -325,6 +325,43 @@ class ParkingBoyFacts {
 
     }
 
+    @Test
+    void should_notify_provide_your_parking_ticket_when_fetching_given_no_ticket_1_smart_parking_boy(){
+        //given no ticket 1 parking boy
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
 
+        //when parking boy fetching
+        Car car = smartParkingBoy.fetching(null);
+        String msg = smartParkingBoy.notify(null);
+
+        //then return null notify provide your parking ticket
+        assertEquals(null,car);
+        assertEquals("Please provide your parking ticket",msg);
+    }
+
+    /*
+    @Test
+
+    void should_notify_no_enough_position_when_parking_given_1_car_1_parking_boy_full_parking_lot(){
+        //given 1 car 1 parking boy 1 full parking lot
+        ParkingBoy parkingBoy = new ParkingBoy();
+        for(int i = 0;i<parkingBoy.getNumOfParkingLot();i++){
+            parkingBoy.getParkingLots().get(i).setCapacity(10);
+        }
+
+        Car car = new Car("湘A562562");
+
+        //when parking boy fetching
+        Ticket ticket = parkingBoy.parking(car);
+        String msg = parkingBoy.notify(ticket);
+
+        //then return null notify provide your parking ticket
+        assertEquals(null,ticket);
+        assertEquals("No enough position",msg);
+
+
+    }
+
+*/
 
 }
