@@ -362,6 +362,21 @@ class ParkingBoyFacts {
 
     }
 
+    @Test
+    void should_park_in_large_available_position_rate_parking_lot_when_parking_given_super_smart_parking_boy_1_car(){
+        //given 1 super smart parking boy 1 car 2 parking lot
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        Car car = new Car("湘A28912");
+        superSmartParkingBoy.getParkingLots.get(0).setCapacity(2);
+        superSmartParkingBoy.getParkingLots.get(0).setCapacity(7);
+
+        //when parking
+        superSmartParkingBoy.parking(car);
+        Boolean isExis = superSmartParkingBoy.get(0).getParkingLots.contains(car);
+        //then park in large available 1
+        assertEquals(ture,isExis);
+    }
+
 
 
 }
