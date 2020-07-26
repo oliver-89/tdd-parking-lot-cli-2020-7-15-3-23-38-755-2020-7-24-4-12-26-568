@@ -251,6 +251,22 @@ class ParkingBoyFacts {
 
     }
 
+    @Test
+    void should_return_null_when_smart_parking_boy_parking_given_used_ticket_1_smart_parking_boy(){
+        //given used ticket 1 parking boy
+        Car car = new Car("湘A562562");
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        Ticket ticket = smartParkingBoy.parking(car);
+        smartParkingBoy.fetching(ticket);
+
+        //when parking boy parking
+        Car car2 = smartParkingBoy.fetching(ticket);
+
+        //then return null
+        assertEquals(null,car2);
+
+    }
+
 
 
 }
